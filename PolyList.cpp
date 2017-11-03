@@ -137,7 +137,7 @@ Polynomial SubPoly(Polynomial P1, Polynomial P2)
 /*逆置算法1
 
 void RePoly(Polynomial *L)   {
-// L是带头结点的单链表的头指针；p、q、r是三个辅助指针
+// L是带头结点的单链表的头指针；t1,t2,t是三个辅助指针
 //在扫描链表的过程中进行逆置操作
     Polynomial t1,t2,t;
     if (!L->next ) return;        //空表
@@ -154,8 +154,8 @@ void RePoly(Polynomial *L)   {
 
 void RePoly(Polynomial *L)
 {
+	if((*L)->link==NULL) return; //如果没有元素 
 	Polynomial t1, t2, t;
-
 	t1=(*L)->link->link;t2=t1->link;
 	if(t1==NULL) return;//有一个元素时，直接返回
 	
@@ -194,13 +194,14 @@ void PrintPoly(Polynomial P)
 
 int main()
 {
-	Polynomial P1 = ReadPoly();
+	Polynomial P1 = ReadPoly();//读取 
 	Polynomial P2 = ReadPoly();
-	Polynomial PA = AddPoly(P1, P2);
+	Polynomial PA = AddPoly(P1, P2);//加法 
 	PrintPoly(PA);
-	Polynomial PB = SubPoly(P1, P2);
+	Polynomial PB = SubPoly(P1, P2);//减法 
 	PrintPoly(PB->link);
 	RePoly(&PB);//逆置 
 	PrintPoly(PB->link);
+	free(P1),free(P2),free(PA),free(PB);
 	return 0;
 }

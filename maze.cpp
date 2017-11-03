@@ -1,6 +1,4 @@
 #include<stdio.h>
- 
-#include<iostream>
 #include<stdlib.h>
 #include<time.h>
 #define STACK_INIT_SIZE 1000
@@ -103,9 +101,9 @@ int main()
              
     }
     printf("\n");
-     
+    
     //开始探路
-    do{
+    while((!StackEmpty(S))&&((p.x!=m)||(p.y!=m))) {
         GetTop(S,p);
         ok=0;i=0;
         while((ok==0)&&(i<8))
@@ -126,7 +124,7 @@ int main()
             maze[p.x][p.y]='*';
             Pop(S,p);
         }
-    }while((!StackEmpty(S))&&((p.x!=m)||(p.y!=m)));
+    }
     //输出探路结果
     if(StackEmpty(S)) printf("没有路径\n");
     else printf("有路径\n");
@@ -139,6 +137,5 @@ int main()
              
     }
     printf("\n");
-    system("pause");
-  
+    system("pause"); 
 }
